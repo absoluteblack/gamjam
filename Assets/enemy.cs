@@ -21,11 +21,15 @@ public class enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Time.frameCount > timer && this.state == State.Idle)
+        frameCount++;
+        if (frameCount > timer && this.state == State.Idle)
         {
-            this.state = State.Fired;
-            Debug.Log("Enemy fired");
+           // this.state = State.Fired;
+            //Debug.Log("Enemy fired");
             GameObject bullet = Instantiate(projectile, projectileSpawnPoint);
+            frameCount = 0;
+            timer = (int) (Random.value * 300);
+            Debug.Log(frameCount + "   ::    " + timer);
         }
 
     }

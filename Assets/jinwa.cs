@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class jinwa : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private int floorscore = 0;
+    public void win()
     {
-        
+        floorscore += 1;
+        Debug.Log(floorscore);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void failure(int damage)
     {
-        
+        floorscore -= damage;
+        Debug.Log(floorscore);
     }
 }

@@ -29,6 +29,11 @@ public class block : MonoBehaviour
         {
             // you lose floors, bitch
             Debug.Log("bitch got hit");
+            this.GetComponent<jinwa>().failure(1); //TODO - add damage read from projectile
+        }
+        else
+        {
+            this.GetComponent<jinwa>().win();
         }
 
     }
