@@ -312,11 +312,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 942910402}
+  - component: {fileID: 942910404}
   - component: {fileID: 942910401}
   - component: {fileID: 942910400}
-  - component: {fileID: 942910404}
   - component: {fileID: 942910403}
   - component: {fileID: 942910405}
+  - component: {fileID: 942910406}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -338,6 +339,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockSprite: {fileID: 21300000, guid: 2ef9c69a7b7bb3749addd46259548c8f, type: 3}
   standSprite: {fileID: 21300000, guid: ccf2af7e5774cf84592daa40d84c1b60, type: 3}
+  canBlock: 0
+  isBlock: 0
 --- !u!212 &942910401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -415,6 +418,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdae0933960d78bce9e62f85ba975ade, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  floorScore: 0
 --- !u!70 &942910404
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
@@ -450,3 +454,15 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &942910406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942910399}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d37780b71dc5324893eed51d5ecdc0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
