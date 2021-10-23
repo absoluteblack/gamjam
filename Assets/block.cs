@@ -6,11 +6,35 @@ public class block : MonoBehaviour
 {
     public Sprite blockSprite;
     public Sprite standSprite;
-
-    public bool canBlock;
+    public bool canBlock = false;
     public bool isBlock;
     int blockStart;
     Animator animator;
+    public int floorScore = 0;
+
+    public void win(int dist = 1)
+    {
+        floorScore += dist;
+        Debug.Log(floorScore);
+        // TODO - once you go negative you can't recover points anymore? shouldn't matter but wtf
+        // TODO - insert test minigame
+        // TODO - say something on state transition win/loss/etc
+
+    }
+
+    public void failure(int damage)
+    {
+        floorScore = Mathf.Max(0, floorScore - damage);
+        if (floorScore == 0)
+        {
+            animator.SetBool("True Loss", true);
+            animator.SetInteger("Damage", damage);
+            Debug.Log("This one is a true loss");
+        }
+        else
+            animator.SetInteger("Damage", damage);
+        Debug.Log(floorScore);
+    }
 
     void Block()
     {
@@ -35,17 +59,18 @@ public class block : MonoBehaviour
         // Literally all possible collisions are projectiles that are either blocked or kill you
         if (!isBlock)
         {
+            blockStart = 0;
             // you lose floors, bitch - '0' damage is a true loss
             if (proj.damage == 0)
             {
-                animator.SetTrigger("Loss");
+                animator.SetBool("True Loss", true);
                 Debug.Log("true loss, back to start");
             }
             else
             {
-                animator.SetInteger("Damage", proj.damage);
+                
                 Debug.Log("Took damage, heading down " + proj.damage + " floors");
-                this.GetComponent<jinwa>().failure(proj.damage);
+                failure(proj.damage);
             }
         }
         else

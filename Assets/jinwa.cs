@@ -13,11 +13,16 @@ public class jinwa : MonoBehaviour
     {
         floorScore += dist;
         Debug.Log(floorScore);
+        // TODO - once you go negative you can't recover points anymore? shouldn't matter but wtf
+        // TODO - handle floorScore <= 0 is a true loss 
+        // TODO - insert test minigame
+        // TODO - say something on state transition win/loss/etc
+
     }
 
     public void failure(int damage)
     {
-        floorScore -= damage;
+       // floorScore = Math.Min(0, floorScore - damage);
         Debug.Log(floorScore);
     }
 
