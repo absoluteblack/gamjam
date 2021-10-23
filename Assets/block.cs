@@ -16,7 +16,6 @@ public class block : MonoBehaviour
     {
         floorScore += dist;
         Debug.Log(" now at floor " + floorScore);
-        // TODO - once you go negative you can't recover points anymore? shouldn't matter but wtf
         // TODO - say something on state transition win/loss/etc
 
     }
