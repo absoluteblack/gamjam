@@ -4,29 +4,24 @@ using UnityEngine;
 
 public class jinwa : MonoBehaviour
 {
-    enum GameStates {PlayerTurn, EnemyTurn, Paused}
-    private GameStates gameState;
+    //enum GameStates {PlayerTurn, EnemyTurn, Paused}
+    //private GameStates gameState;
 
-    private int floorScore = 0;
+    public int floorScore = 0;
 
-    public void win()
+    public void win(int dist = 1)
     {
-        floorScore += 1;
+        floorScore += dist;
         Debug.Log(floorScore);
     }
 
     public void failure(int damage)
     {
-        if (gameState == GameStates.EnemyTurn)
-        {
-            // TODO - read damage from projectile in block.cs
-            floorScore -= damage;
-            Debug.Log(floorScore);
-        }
+        floorScore -= damage;
+        Debug.Log(floorScore);
     }
 
     public void Start()
     {
-        gameState = GameStates.EnemyTurn;
     }
 }

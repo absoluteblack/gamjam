@@ -6,53 +6,72 @@ public class block : MonoBehaviour
 {
     public Sprite blockSprite;
     public Sprite standSprite;
-    enum PlayerStates {Standing, Blocking};
-    PlayerStates state;
+
+    public bool canBlock;
+    public bool isBlock;
     int blockStart;
+    Animator animator;
 
     void Block()
     {
         Debug.Log("Sprite Clicked at :" + blockStart);
+        canBlock = false;
+        isBlock = true;
     //    this.GetComponent<SpriteRenderer>().sprite = blockSprite;
         blockStart = Time.frameCount;
-        this.state = PlayerStates.Blocking;
+        animator.SetTrigger("Change Turn");
     }
     void OnMouseDown(){
-        if (this.state == PlayerStates.Standing)
+        if (canBlock)
+        {
             Block();
+
+        }
     }
 
     void OnTriggerEnter2D(Collider2D coll){
+        GameObject obj = coll.gameObject;
+        projectile2 proj = obj.GetComponent<projectile2>();
         // Literally all possible collisions are projectiles that are either blocked or kill you
-        Debug.Log("Bitch might have been hit?");
-        if (this.state != PlayerStates.Blocking)
+        if (!isBlock)
         {
-            // you lose floors, bitch
-            Debug.Log("bitch got hit");
-            this.GetComponent<jinwa>().failure(1); //TODO - add damage read from projectile
+            // you lose floors, bitch - '0' damage is a true loss
+            if (proj.damage == 0)
+            {
+                animator.SetTrigger("Loss");
+                Debug.Log("true loss, back to start");
+            }
+            else
+            {
+                animator.SetInteger("Damage", proj.damage);
+                Debug.Log("Took damage, heading down " + proj.damage + " floors");
+                this.GetComponent<jinwa>().failure(proj.damage);
+            }
         }
         else
         {
-            Debug.Log("Bitch blcoked!");
-            this.GetComponent<jinwa>().win();
+            animator.SetTrigger("Change Turn");
+            Debug.Log("Bitch blocked!");
         }
 
     }
 
     public void Update()
     {
-        if (this.state == PlayerStates.Blocking)
+        if (isBlock)
         {
             if (Time.frameCount - blockStart > 120)
             {
-                Debug.Log("yo, time to stand");
-                this.state = PlayerStates.Standing;
-     //           this.GetComponent<SpriteRenderer>().sprite = standSprite;
+                Debug.Log("time to stand");
+                isBlock = false;
+                //this.GetComponent<SpriteRenderer>().sprite = standSprite;
             }
         }
+            
     }
     public void Start()
     {
-        this.state = PlayerStates.Standing;
+        canBlock = false;
+        animator = GetComponent<Animator>();
     }
 }
