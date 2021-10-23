@@ -3,7 +3,10 @@ guid: c22cf69bf9f07cf96bdc9a915ed377db
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - projectile: {instanceID: 0}
+  - projectileSpawnPoint: {instanceID: 0}
+  - minigame: {fileID: 1930415852161141086, guid: 2a7da70477c4af941a45da20408700b5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

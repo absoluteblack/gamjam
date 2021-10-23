@@ -6,7 +6,8 @@ public class enemy : MonoBehaviour
 {
     public GameObject projectile;
     public Transform projectileSpawnPoint;
-    public bool minigame = false;
+    public bool hasMinigame = false;
+    public GameObject minigame;
     int frameCount;
     int timer;
     // Start is called before the first frame update
@@ -31,14 +32,14 @@ public class enemy : MonoBehaviour
     }
     public void Act()
     {
-        if (!minigame)
+        if (!hasMinigame)
         {
             this.Fire();
         }
         else
         {
-            // put a minigame in here :)
-            this.Fire();
+           GameObject realGame = Instantiate(minigame);
+           realGame.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         }
     }
 }
