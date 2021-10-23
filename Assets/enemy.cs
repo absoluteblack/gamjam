@@ -37,8 +37,8 @@ public class enemy : MonoBehaviour
         }
         else
         {
-            // put a minigame in here :)
-            this.Fire();
+           GameObject realGame = Instantiate(minigame);
+           realGame.transform.SetParent(GameObject.FindGameObjectWithTag("Canvas").transform, false);
         }
     }
 }
