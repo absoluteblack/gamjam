@@ -8,6 +8,7 @@ public class enemy : MonoBehaviour
     public Transform projectileSpawnPoint;
     public GameObject minigame = null;
     public string weakness;
+    public bool hasMinigame = true;
     int frameCount;
     int timer;
     // Start is called before the first frame update
@@ -32,7 +33,7 @@ public class enemy : MonoBehaviour
     }
     public void Act()
     {
-        if (minigame is null)
+        if (!hasMinigame)
         {
             this.Fire();
         }

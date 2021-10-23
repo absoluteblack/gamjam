@@ -9,6 +9,15 @@ public class enemyTurn : StateMachineBehaviour
     {
         Debug.Log("enemy turn");
         enemy e = GameObject.Find("Enemy").GetComponent<enemy>();
+        float rand = Random.Range(-1f,1f);
+        if (rand > 0)
+        {
+            e.hasMinigame = false;
+        }
+        else
+        {
+            e.hasMinigame = true;
+        }
         GameObject p = GameObject.Find("Player");
         p.GetComponent<block>().canBlock = true;
         e.Act();
