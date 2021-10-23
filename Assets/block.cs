@@ -7,17 +7,16 @@ public class block : MonoBehaviour
     public Sprite blockSprite;
     public Sprite standSprite;
     public bool canBlock = false;
-    public bool isBlock;
+    public bool isBlock = false;
     int blockStart;
     Animator animator;
-    public int floorScore = 0;
+    public int floorScore = 1;
 
     public void win(int dist = 1)
     {
         floorScore += dist;
-        Debug.Log(floorScore);
+        Debug.Log(" now at floor " + floorScore);
         // TODO - once you go negative you can't recover points anymore? shouldn't matter but wtf
-        // TODO - insert test minigame
         // TODO - say something on state transition win/loss/etc
 
     }
@@ -29,21 +28,18 @@ public class block : MonoBehaviour
         {
             animator.SetBool("True Loss", true);
             animator.SetInteger("Damage", damage);
-            Debug.Log("This one is a true loss");
         }
         else
             animator.SetInteger("Damage", damage);
-        Debug.Log(floorScore);
+        Debug.Log("now at floor " + floorScore);
     }
 
     void Block()
     {
-        Debug.Log("Sprite Clicked at :" + blockStart);
         canBlock = false;
         isBlock = true;
     //    this.GetComponent<SpriteRenderer>().sprite = blockSprite;
         blockStart = Time.frameCount;
-        animator.SetTrigger("Change Turn");
     }
     void OnMouseDown(){
         if (canBlock)
@@ -64,11 +60,9 @@ public class block : MonoBehaviour
             if (proj.damage == 0)
             {
                 animator.SetBool("True Loss", true);
-                Debug.Log("true loss, back to start");
             }
             else
             {
-                
                 Debug.Log("Took damage, heading down " + proj.damage + " floors");
                 failure(proj.damage);
             }
@@ -87,7 +81,6 @@ public class block : MonoBehaviour
         {
             if (Time.frameCount - blockStart > 120)
             {
-                Debug.Log("time to stand");
                 isBlock = false;
                 //this.GetComponent<SpriteRenderer>().sprite = standSprite;
             }

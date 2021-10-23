@@ -10,6 +10,7 @@ public class newRun : StateMachineBehaviour
         Debug.Log("We are starting a new game");
         GameObject p = animator.gameObject;
         p.GetComponent<block>().floorScore = 1;
+        animator.SetBool("True Loss", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

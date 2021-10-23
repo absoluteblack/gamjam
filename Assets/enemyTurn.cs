@@ -11,7 +11,7 @@ public class enemyTurn : StateMachineBehaviour
         enemy e = GameObject.Find("Enemy").GetComponent<enemy>();
         GameObject p = GameObject.Find("Player");
         p.GetComponent<block>().canBlock = true;
-        e.Fire();
+        e.Act();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -26,6 +26,7 @@ public class enemyTurn : StateMachineBehaviour
         Debug.Log("End of enemy turn");
         GameObject p = animator.gameObject;
         p.GetComponent<block>().canBlock = false;
+        p.GetComponent<block>().isBlock = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
