@@ -6,20 +6,40 @@ public class block : MonoBehaviour
 {
     public Sprite blockSprite;
     public Sprite standSprite;
-
-    public bool canBlock;
-    public bool isBlock;
+    public bool canBlock = false;
+    public bool isBlock = false;
     int blockStart;
     Animator animator;
+    public int floorScore = 1;
+
+    public void win(int dist = 1)
+    {
+        floorScore += dist;
+        Debug.Log(" now at floor " + floorScore);
+        // TODO - once you go negative you can't recover points anymore? shouldn't matter but wtf
+        // TODO - say something on state transition win/loss/etc
+
+    }
+
+    public void failure(int damage)
+    {
+        floorScore = Mathf.Max(0, floorScore - damage);
+        if (floorScore == 0)
+        {
+            animator.SetBool("True Loss", true);
+            animator.SetInteger("Damage", damage);
+        }
+        else
+            animator.SetInteger("Damage", damage);
+        Debug.Log("now at floor " + floorScore);
+    }
 
     void Block()
     {
-        Debug.Log("Sprite Clicked at :" + blockStart);
         canBlock = false;
         isBlock = true;
     //    this.GetComponent<SpriteRenderer>().sprite = blockSprite;
         blockStart = Time.frameCount;
-        animator.SetTrigger("Change Turn");
     }
     void OnMouseDown(){
         if (canBlock)
@@ -35,17 +55,16 @@ public class block : MonoBehaviour
         // Literally all possible collisions are projectiles that are either blocked or kill you
         if (!isBlock)
         {
+            blockStart = 0;
             // you lose floors, bitch - '0' damage is a true loss
             if (proj.damage == 0)
             {
-                animator.SetTrigger("Loss");
-                Debug.Log("true loss, back to start");
+                animator.SetBool("True Loss", true);
             }
             else
             {
-                animator.SetInteger("Damage", proj.damage);
                 Debug.Log("Took damage, heading down " + proj.damage + " floors");
-                this.GetComponent<jinwa>().failure(proj.damage);
+                failure(proj.damage);
             }
         }
         else
@@ -62,7 +81,6 @@ public class block : MonoBehaviour
         {
             if (Time.frameCount - blockStart > 120)
             {
-                Debug.Log("time to stand");
                 isBlock = false;
                 //this.GetComponent<SpriteRenderer>().sprite = standSprite;
             }

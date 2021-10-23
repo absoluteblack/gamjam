@@ -12,7 +12,7 @@ public class onTurn : MonoBehaviour
     public void turnUI()
     {
         Debug.Log("You fired a lightning bolt haha");
-        this.GetComponent<jinwa>().win(1);
+        this.GetComponent<block>().win(1);
         this.GetComponent<Animator>().SetTrigger("Win");
     }
 

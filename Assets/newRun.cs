@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyTurn : StateMachineBehaviour
+public class newRun : StateMachineBehaviour
 {
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        Debug.Log("enemy turn");
-        enemy e = GameObject.Find("Enemy").GetComponent<enemy>();
-        GameObject p = GameObject.Find("Player");
-        p.GetComponent<block>().canBlock = true;
-        e.Act();
+        Debug.Log("We are starting a new game");
+        GameObject p = animator.gameObject;
+        p.GetComponent<block>().floorScore = 1;
+        animator.SetBool("True Loss", false);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -21,13 +20,10 @@ public class enemyTurn : StateMachineBehaviour
     //}
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
-    override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    {
-        Debug.Log("End of enemy turn");
-        GameObject p = animator.gameObject;
-        p.GetComponent<block>().canBlock = false;
-        p.GetComponent<block>().isBlock = false;
-    }
+    //override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
+    //{
+    //    
+    //}
 
     // OnStateMove is called right after Animator.OnAnimatorMove()
     //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
