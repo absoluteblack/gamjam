@@ -11,6 +11,7 @@ public class onTurn : MonoBehaviour
     }
     public void turnUI()
     {
+        //TODO add buttons that do this
         Debug.Log("You fired a lightning bolt haha");
         this.GetComponent<block>().win(1);
         this.GetComponent<Animator>().SetTrigger("Win");

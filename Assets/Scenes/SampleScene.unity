@@ -299,7 +299,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   projectile: {fileID: 5306003128892922323, guid: 91189be2064a236e6bca24cbd412caa3, type: 3}
   projectileSpawnPoint: {fileID: 513501507}
-  hasMinigame: 1
   minigame: {fileID: 1930415852161141086, guid: 2a7da70477c4af941a45da20408700b5, type: 3}
 --- !u!1 &519420028
 GameObject:
@@ -396,7 +395,6 @@ GameObject:
   - component: {fileID: 942910404}
   - component: {fileID: 942910401}
   - component: {fileID: 942910400}
-  - component: {fileID: 942910403}
   - component: {fileID: 942910405}
   - component: {fileID: 942910406}
   m_Layer: 0
@@ -422,7 +420,7 @@ MonoBehaviour:
   standSprite: {fileID: 21300000, guid: ccf2af7e5774cf84592daa40d84c1b60, type: 3}
   canBlock: 0
   isBlock: 0
-  floorScore: 1
+  floorScore: 0
 --- !u!212 &942910401
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -488,18 +486,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &942910403
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 942910399}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cdae0933960d78bce9e62f85ba975ade, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!70 &942910404
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
