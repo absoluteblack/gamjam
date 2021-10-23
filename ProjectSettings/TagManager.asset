@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Canvas
   - Minigame
+  - Spell Button
   layers:
   - Default
   - TransparentFX
