@@ -17,7 +17,7 @@ public class block : MonoBehaviour
         floorScore += dist;
         Debug.Log(" now at floor " + floorScore);
         // TODO - say something on state transition win/loss/etc
-
+        animator.SetTrigger("Win");
     }
 
     public void failure(int damage)

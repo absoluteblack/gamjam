@@ -7,6 +7,7 @@ public class enemy : MonoBehaviour
     public GameObject projectile;
     public Transform projectileSpawnPoint;
     public GameObject minigame = null;
+    public string weakness;
     int frameCount;
     int timer;
     // Start is called before the first frame update
