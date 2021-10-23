@@ -33,6 +33,7 @@ public class block : MonoBehaviour
         }
         else
         {
+            Debug.Log("Bitch blcoked!");
             this.GetComponent<jinwa>().win();
         }
 
