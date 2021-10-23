@@ -5,6 +5,7 @@ using UnityEngine;
 public class projectile2 : MonoBehaviour
 {
     private Rigidbody2D rb2D;
+    public int damage;
     // Start is called before the first frame update
     void Start()
     {
