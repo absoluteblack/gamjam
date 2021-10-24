@@ -6,9 +6,10 @@ public class enemy : MonoBehaviour
 {
     public GameObject projectile;
     public Transform projectileSpawnPoint;
+    public GameObject minigame;
+    public bool hasMiniGame = false;
     public GameObject minigame = null;
     public string weakness;
-    public bool hasMinigame = true;
     int frameCount;
     int timer;
     // Start is called before the first frame update

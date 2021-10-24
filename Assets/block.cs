@@ -11,7 +11,8 @@ public class block : MonoBehaviour
     int blockStart;
     Animator animator;
     public int floorScore = 1;
-
+    public AudioSource BlockSound;
+    public AudioSource PortalSound;
     public void win(int dist = 1)
     {
         floorScore += dist;
@@ -62,23 +63,26 @@ public class block : MonoBehaviour
             }
             else
             {
+                PortalSound.Play();
                 Debug.Log("Took damage, heading down " + proj.damage + " floors");
                 failure(proj.damage);
             }
         }
         else
         {
+            BlockSound.Play();
             animator.SetTrigger("Change Turn");
             Debug.Log("Bitch blocked!");
         }
-
+        
+        Destroy(GameObject.FindGameObjectWithTag("Projectile"));
     }
 
     public void Update()
     {
         if (isBlock)
         {
-            if (Time.frameCount - blockStart > 120)
+            if (Time.frameCount - blockStart > 20)
             {
                 isBlock = false;
                 //this.GetComponent<SpriteRenderer>().sprite = standSprite;
@@ -88,6 +92,7 @@ public class block : MonoBehaviour
     }
     public void Start()
     {
+        Application.targetFrameRate = 60;
         canBlock = false;
         animator = GetComponent<Animator>();
     }

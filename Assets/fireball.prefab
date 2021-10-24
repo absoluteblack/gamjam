@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3799327610806565006}
   m_Layer: 0
   m_Name: fireball
-  m_TagString: Untagged
+  m_TagString: Projectile
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -97,6 +97,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6edea23881e87a1fc83a1fe318e26e87, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  initialHSpeed: 0
+  hAccel: -6
+  initialVSpeed: 500
+  vAccel: -10
   damage: 1
 --- !u!50 &3799327610806565041
 Rigidbody2D:
