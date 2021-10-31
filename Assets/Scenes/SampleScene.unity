@@ -300,7 +300,7 @@ MonoBehaviour:
   projectile: {fileID: 5306003128892922323, guid: 91189be2064a236e6bca24cbd412caa3, type: 3}
   projectileSpawnPoint: {fileID: 513501507}
   minigame: {fileID: 1930415852161141086, guid: 2a7da70477c4af941a45da20408700b5, type: 3}
-  hasMiniGame: 0
+  hasMiniGame: 1
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
