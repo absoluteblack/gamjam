@@ -17,7 +17,7 @@ public class onTurn : MonoBehaviour
         foreach (GameObject button in buttons)
         {
             button.SetActive(true);
-            //TODO - not all buttons are always active
+            //TODO - not all buttons are always active - should be gone during EnemyTurn
         }
     }
 

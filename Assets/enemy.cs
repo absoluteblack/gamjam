@@ -7,8 +7,7 @@ public class enemy : MonoBehaviour
     public GameObject projectile;
     public Transform projectileSpawnPoint;
     public GameObject minigame;
-    public bool hasMiniGame = false;
-    public GameObject minigame = null;
+    public bool hasMinigame;
     public string weakness;
     int frameCount;
     int timer;
