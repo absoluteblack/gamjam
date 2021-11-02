@@ -26,10 +26,12 @@ public class block : MonoBehaviour
         floorScore = Mathf.Max(0, floorScore - damage);
         if (floorScore == 0)
         {
+            PortalSound.Play();
             animator.SetBool("True Loss", true);
             animator.SetInteger("Damage", damage);
         }
         else
+            PortalSound.Play();
             animator.SetInteger("Damage", damage);
         Debug.Log("now at floor " + floorScore);
     }
@@ -63,7 +65,6 @@ public class block : MonoBehaviour
             }
             else
             {
-                PortalSound.Play();
                 Debug.Log("Took damage, heading down " + proj.damage + " floors");
                 failure(proj.damage);
             }
